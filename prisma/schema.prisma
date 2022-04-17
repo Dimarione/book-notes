@@ -1,0 +1,40 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Author {
+  id         Int    @id @default(autoincrement())
+  first_name String @db.VarChar(50)
+  last_name  String @db.VarChar(50)
+  Book Book[] @ignore
+
+  @@map("authors")
+}
+
+model Book {
+  id                 Int    @id @default(autoincrement())
+  name_of_book       String @db.VarChar(50)
+  year_of_publishing String @db.VarChar(10)
+  author_id          Int
+  Author             Author @relation(fields: [author_id], references: [id])
+  Card               Card[] @ignore
+
+  @@map("books")
+}
+
+model Card {
+  id               Int      @id @default(autoincrement())
+  card_name        String   @db.VarChar(50)
+  text_body        String   @db.VarChar(250)
+  number_of_page   String   @db.VarChar(5)
+  date_of_creation DateTime @db.Date
+  book_id          Int
+  Book             Book     @relation(fields: [book_id], references: [id])
+
+  @@map("cards")
+}

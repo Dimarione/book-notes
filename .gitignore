@@ -1,2 +1,5 @@
 # IDE files are ignored
 .idea
+
+.env
+node_modules
