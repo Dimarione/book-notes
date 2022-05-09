@@ -19,4 +19,4 @@ And open [http://127.0.0.1:3000](http://127.0.0.1:3000)
 
 ## Structure
 
-Repo contains api route for **authors** (see: `/api/authors.js`)
+Repo contains api route for **authors** (see: `/app/api/authors.js`)

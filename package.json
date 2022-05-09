@@ -12,6 +12,6 @@
     "@types/node": "^17.0.23"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node app/index.js"
   }
 }
