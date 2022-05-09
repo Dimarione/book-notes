@@ -13,5 +13,8 @@
   },
   "scripts": {
     "start": "node app/index.js"
+  },
+  "prisma": {
+    "schema": "app/prisma/schema.prisma"
   }
 }

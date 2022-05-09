@@ -2,11 +2,20 @@
 
 ## Instal
 
+### Application setup
+
 ```sh
 yarn install
 cp env.example .env
-vim .env # replace *username* in DATABASE_URL to real database username
+vim .env # replace *username* in DATABASE_URL to real database username (or see in docker-compose.yml)
 npx prisma generate
+```
+
+### DB setup (optional)
+
+```sh
+docker compose up
+npx prisma db push # run only if you don't have db structure yet
 ```
 
 ## Run
