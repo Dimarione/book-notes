@@ -1,12 +1,20 @@
 version: '3.8'
 
+networks:
+  my-network:
+    driver: bridge
+
 services:  
   app:
     container_name: book-notes
     image: cherryoff/book-notes:latest
     restart: always
+    environment:
+      DATABASE_URL: "postgresql://root:root@db:5432/test_db?schema=public"
     ports:
       - "3000:3000"
+    depends_on:
+      - db
   db:
     container_name: pg_container
     image: postgres
@@ -15,6 +23,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: test_db
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   pgadmin:

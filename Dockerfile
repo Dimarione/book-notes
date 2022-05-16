@@ -7,7 +7,7 @@ USER node
 COPY --chown=node:node ./yarn.lock ./
 RUN npm install
 
-COPY --chown=node:node .env .
+# COPY --chown=node:node .env .
 COPY --chown=node:node ./app ./app
 
 RUN npx prisma generate
